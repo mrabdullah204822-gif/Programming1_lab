@@ -5,4 +5,4 @@ Do this at least **5** days in a week
 - go to for run
 - take healthy food
 
-  ![images](images/images001.jpg)
+  ![images](Images/images001.jpg)
