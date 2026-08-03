@@ -1,0 +1,11 @@
+name=input("enter your name")
+age=int(input("enter your age"))
+height=float(input("enter your height in meters"))
+fav=input("enter your favrourite programming language")
+print("----- PROFILE SUMMARY -----")
+print("Name: ", name)
+print("Age: ", "Next year you will be" ,age+1, "years old")
+print("Height: ", height/100,"m")
+print("Favourite programming: ",  fav)
+print("--------------------------------------")
+
