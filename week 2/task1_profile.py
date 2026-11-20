@@ -1,11 +1,42 @@
-name=input("enter your name")
-age=int(input("enter your age"))
-height=float(input("enter your height in meters"))
-fav=input("enter your favrourite programming language")
-print("----- PROFILE SUMMARY -----")
-print("Name: ", name)
-print("Age: ", "Next year you will be" ,age+1, "years old")
-print("Height: ", height/100,"m")
-print("Favourite programming: ",  fav)
-print("--------------------------------------")
+def add_requisition():
+    counter = 10000
 
+    print("Enter requisition details")
+
+    requisition_date = input("Date: ")
+    employee_id = input("Staff ID: ")
+    employee_name = input("Staff Name: ")
+
+    counter += 1
+    req_id = counter
+
+    print("Requisition ID:", req_id)
+
+    requisition_items = []
+    requisition_total = 0
+
+    answer = "yes"
+
+    while answer.lower() == "yes":
+        product_name = input("Item Name: ")
+        product_price = float(input("Item Price ($): "))
+
+        requisition_items.append({
+            "name": product_name,
+            "price": product_price
+        })
+
+        requisition_total += product_price
+
+        answer = input("Add another item (yes/no): ")
+
+    print("Total:", requisition_total)
+
+    return (
+        requisition_date,
+        employee_id,
+        employee_name,
+        req_id,
+        requisition_items,
+        requisition_total
+    )

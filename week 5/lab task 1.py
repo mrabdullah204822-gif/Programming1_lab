@@ -1,6 +1,0 @@
-name=input("Enter your name: ")
-print ("--------------------")
-print ("Uppercase: ", name.upper())
-print ("Lowercase: ", name.lower())
-print ("First 3 letters: ", name[:3])
-print ("Last 2 letters: ", name[-2:])

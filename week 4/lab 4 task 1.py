@@ -1,16 +1,13 @@
-while True:
-    score = int(input("Enter score: "))
+score = float(input("Enter score: "))
 
-    if 0 <= score <= 100:
-        break
-    else:
-        print ("Invalid score")
+while score < 0 or score > 100:
+    score = float(input("Enter a score from 0 to 100: "))
 
 if score >= 80:
-    print ("Grade: A")
+    print("A")
 elif score >= 60:
-    print("Grade: B")
+    print("B")
 elif score >= 50:
-    print ("Grade: C")
+    print("C")
 else:
-    print ("Grade: Fail")
+    print("Fail")
