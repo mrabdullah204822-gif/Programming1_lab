@@ -116,3 +116,93 @@ class Requisition:
 
         return total_requisitions, approved, pending, not_approved
 
+requisitionlist = []
+requisition_id = 10001
+
+while True:
+    print("========== Requisition System ==========")
+    print("1. Submit New Requisition")
+    print("2. Display All Requisitions")
+    print("3. Manager Response")
+    print("4. Requisition Statistics")
+    print("5. Exit")
+
+    choice = input("Enter your choice: ")
+
+    if choice == "1":
+        print("Enter your information")
+
+        date = input("Enter Date: ")
+        staff_id = input("Enter Staff ID: ")
+        staff_name = input("Enter Staff Name: ")
+
+        requisition = Requisition(requisition_id, date, staff_id, staff_name)
+
+        print("Requisition ID:", requisition.requisition_id)
+
+        requisition.add_requisition()
+        requisition.requisition_approval()
+
+        requisitionlist.append(requisition)
+
+        print("Requisition submitted successfully.")
+        print("Requisition ID:", requisition.requisition_id)
+        print("Total: $", requisition.total)
+        print("Status:", requisition.status)
+        print("Approval Reference Number:", requisition.approval_reference)
+
+        requisition_id += 1
+
+    elif choice == "2":
+        if len(requisitionlist) == 0:
+            print("No Requisitions Submitted.")
+
+        else:
+            requisitionlist[0].display_requisitions(requisitionlist)
+
+    elif choice == "3":
+        try:
+            req_id = int(input("Enter Requisition ID: "))
+        except ValueError:
+            print("Please enter a valid Requisition ID.")
+            continue
+
+        found = False
+
+        for requisition in requisitionlist:
+            if requisition.requisition_id == req_id:
+                found = True
+
+                if requisition.status == "Pending":
+                    print("1. Approve")
+                    print("2. Not approved")
+                    print("3. Keep Pending")
+
+                    decision = input("Enter your choice: ")
+                    requisition.respond_requisition(decision)
+
+                else:
+                    print("This requisition is not Pending")
+
+                break
+
+        if found == False:
+            print("Requisition ID not found.")
+
+    elif choice == "4":
+        if len(requisitionlist) == 0:
+            print("Displaying the Requisition Statistics")
+            print("Total number of requisitions submitted:", 0)
+            print("Total number of approved requisitions:", 0)
+            print("Total number of pending requisitions:", 0)
+            print("Total number of not approved requisitions:", 0)
+
+        else:
+            requisitionlist[0].requisition_statistics(requisitionlist)
+
+    elif choice == "5":
+        print("Thank you for using Requisition System.")
+        break
+
+    else:
+        print("Please enter a valid choice.")
